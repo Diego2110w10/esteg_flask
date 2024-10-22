@@ -6,7 +6,7 @@
     </div>
 
     <div class="form">
-        <form action="/codificar" method="post">
+        <form action="/codificar" method="post" enctype="multipart/form-data">
             <label for="mensagem">Digite a mensagem a ser codificada:</label>
             <input type="text" name="mensagem" required>
             <label for="imagem">Escolha a imagem (PNG):</label>
@@ -15,5 +15,13 @@
         </form>
     </div>
 
+    <div class="encoded_image">
+        {% if image_data %}
+        <h2>Imagem gerada com sucesso!</h2>
+        <img src="data:image/png;base64, {{image_data|b64encode}}" alt="Imagem Codificada">
+        <br />
+        <a href="data:image/png;base64, {{image_data|b64encode}}" download="{{img_file}}">
 
+        {% endif %}
+    </div>
 {% endblock %}
